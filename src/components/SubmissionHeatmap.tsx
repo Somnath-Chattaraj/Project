@@ -1,6 +1,6 @@
 import CalendarHeatmap from 'react-calendar-heatmap';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { format } from 'date-fns';
+import {TooltipProvider } from '@/components/ui/tooltip';
+
 import 'react-calendar-heatmap/dist/styles.css';
 
 interface SubmissionHeatmapProps {
@@ -33,16 +33,16 @@ export default function SubmissionHeatmap({ data }: SubmissionHeatmapProps) {
           startDate={startDate}
           endDate={new Date()}
           values={data}
-          classForValue={(value) => {
+          classForValue={(value:any) => {
             if (!value) return 'color-empty';
             return getColorClass(value.count);
           }}
-          tooltipDataAttrs={(value) => {
-            if (!value || !value.date) return {};
-            return {
-              'data-tip': `${value.count} submissions on ${format(new Date(value.date), 'MMM dd, yyyy')}`,
-            };
-          }}
+          // tooltipDataAttrs={(value) => {
+          //   if (!value || !value.date) return {};
+          //   return {
+          //     'data-tip': `${value.count} submissions on ${format(new Date(value.date), 'MMM dd, yyyy')}`,
+          //   };
+          // }}
         />
       </TooltipProvider>
     </div>

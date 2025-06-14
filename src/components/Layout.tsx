@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ModeToggle } from '@/components/ModeToggle';
-import { Code2, Users, Trophy } from 'lucide-react';
+import { Code2, Users } from 'lucide-react';
 
 interface LayoutProps {
   children: ReactNode;
