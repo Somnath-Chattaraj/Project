@@ -11,7 +11,7 @@ A full-stack MERN application designed to help instructors manage and monitor th
 
 Watch a quick demo of how the Codeforces Student Tracker works:
 
-[![Watch the video](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://youtu.be/lQNTkC__SnQ)
+[![Watch the video](public/image.png)](https://youtu.be/lQNTkC__SnQ)
 
 
 ---
