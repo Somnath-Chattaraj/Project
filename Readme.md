@@ -7,6 +7,16 @@ A full-stack MERN application designed to help instructors manage and monitor th
 ![React](https://img.shields.io/badge/react-18+-blue.svg)
 ![MongoDB](https://img.shields.io/badge/mongodb-6+-green.svg)
 
+## 🎥 Video Walkthrough
+
+Watch a quick demo of how the Codeforces Student Tracker works:
+
+[![Watch the video](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://youtu.be/lQNTkC__SnQ)
+
+
+---
+
+
 ## 🌟 Features
 
 ### 📊 Student Management Dashboard
@@ -220,7 +230,7 @@ The `SYNC_CRON_SCHEDULE` uses standard cron syntax:
 3. Set output directory: `dist`
 4. Deploy automatically on push
 
-### Backend (Railway/Render)
+### Backend (Render)
 1. Connect your GitHub repository
 2. Set start command: `npm run server`
 3. Configure environment variables
@@ -241,7 +251,7 @@ The `SYNC_CRON_SCHEDULE` uses standard cron syntax:
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License
 
 ---
 
