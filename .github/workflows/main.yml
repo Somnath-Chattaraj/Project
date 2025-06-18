@@ -1,0 +1,19 @@
+name: Daily Codeforces Sync and Reminder
+
+on:
+  schedule:
+    # Runs daily at 2:00 AM IST (which is 20:30 UTC the previous day)
+    - cron: '30 20 * * *'
+
+jobs:
+  run-daily-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call /sync-all-students
+        run: |
+          curl -X POST https://project-pry1.onrender.com/api/sync-all-students
+
+      - name: Call /send-inactivity-reminders
+        run: |
+          curl -X POST https://project-pry1.onrender.com/api/send-inactivity-reminders
