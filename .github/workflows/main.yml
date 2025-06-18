@@ -2,8 +2,8 @@ name: Daily Codeforces Sync and Reminder
 
 on:
   schedule:
-    # Runs daily at 2:00 AM IST (which is 20:30 UTC the previous day)
-    - cron: '23 19 * * *'
+    - cron: '23 19 * * *' # 12:53 AM IST
+  workflow_dispatch:       # For manual testing
 
 jobs:
   run-daily-sync:
