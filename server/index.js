@@ -65,6 +65,27 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
+
+app.post('/api/sync-all-students', async (req, res) => {
+  try {
+    await syncAllStudents();
+    res.status(200).json({ message: 'Student sync completed.' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to sync students.' });
+  }
+});
+
+app.post('/api/send-inactivity-reminders', async (req, res) => {
+  try {
+    await sendInactivityReminders();
+    res.status(200).json({ message: 'Inactivity reminders sent.' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to send reminders.' });
+  }
+});
+
 // Cron job to sync Codeforces data daily at 2 AM
 cron.schedule('0 2 * * *', async () => {
   console.log('Starting daily Codeforces data sync...');
