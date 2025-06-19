@@ -68,6 +68,7 @@ export default function StudentsPage() {
     try {
       const response = await studentsAPI.create(studentData);
       setStudents([...students, response.data]);
+      await fetchStudents();
       setShowForm(false);
       toast.success('Student added successfully');
     } catch (error) {
@@ -77,32 +78,35 @@ export default function StudentsPage() {
   };
 
   const handleEditStudent = async (studentData: Omit<Student, '_id' | 'lastUpdated' | 'remindersSent'>) => {
-    if (!editingStudent) return;
-    
-    try {
-      const response = await studentsAPI.update(editingStudent._id, studentData);
-      setStudents(students.map(s => s._id === editingStudent._id ? response.data : s));
-      setEditingStudent(null);
-      toast.success('Student updated successfully');
-    } catch (error) {
-      toast.error('Failed to update student');
-      console.error('Error updating student:', error);
-    }
-  };
+  if (!editingStudent) return;
 
-  const handleDeleteStudent = async () => {
-    if (!deleteStudent) return;
-    
-    try {
-      await studentsAPI.delete(deleteStudent._id);
-      setStudents(students.filter(s => s._id !== deleteStudent._id));
-      setDeleteStudent(null);
-      toast.success('Student deleted successfully');
-    } catch (error) {
-      toast.error('Failed to delete student');
-      console.error('Error deleting student:', error);
-    }
-  };
+  try {
+    await studentsAPI.update(editingStudent._id, studentData);
+    await fetchStudents(); // Refresh the data
+    setEditingStudent(null);
+    toast.success('Student updated successfully');
+  } catch (error) {
+    toast.error('Failed to update student');
+    console.error('Error updating student:', error);
+  }
+};
+
+const handleDeleteStudent = async () => {
+  if (!deleteStudent) return;
+
+  try {
+    await studentsAPI.delete(deleteStudent._id);
+    await fetchStudents(); // Refresh the data
+    setDeleteStudent(null);
+    toast.success('Student deleted successfully');
+  } catch (error) {
+    toast.error('Failed to delete student');
+    console.error('Error deleting student:', error);
+  }
+};
+
+
+  
 
   const handleSyncStudent = async (studentId: string) => {
     try {
