@@ -219,11 +219,27 @@ export default function StudentProfile() {
 
       {/* Tabs */}
       <Tabs defaultValue="contests" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="contests">Contest History</TabsTrigger>
-          <TabsTrigger value="problems">Problem Solving</TabsTrigger>
-          <TabsTrigger value="activity">Activity</TabsTrigger>
-        </TabsList>
+        <TabsList className="grid w-full grid-cols-3 bg-black p-1 rounded-md border border-gray-700">
+  <TabsTrigger
+    value="contests"
+    className="text-gray-400 hover:bg-gray-800 data-[state=active]:bg-white data-[state=active]:text-black rounded-md px-3 py-2 transition font-medium"
+  >
+    Contest History
+  </TabsTrigger>
+  <TabsTrigger
+    value="problems"
+    className="text-gray-400 hover:bg-gray-800 data-[state=active]:bg-white data-[state=active]:text-black rounded-md px-3 py-2 transition font-medium"
+  >
+    Problem Solving
+  </TabsTrigger>
+  <TabsTrigger
+    value="activity"
+    className="text-gray-400 hover:bg-gray-800 data-[state=active]:bg-white data-[state=active]:text-black rounded-md px-3 py-2 transition font-medium"
+  >
+    Activity
+  </TabsTrigger>
+</TabsList>
+
 
         <TabsContent value="contests" className="space-y-4">
           <div className="flex items-center justify-between">
@@ -249,14 +265,17 @@ export default function StudentProfile() {
                 <RatingChart contests={contests} />
               </CardContent>
             </Card>
-            <Card>
+             <Card>
               <CardHeader>
                 <CardTitle className="text-base">Recent Contests</CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <ContestTable contests={contests.slice(0, 5)} />
+                <div className="max-h-[400px] overflow-y-auto">
+                  <ContestTable contests={contests} />
+                </div>
               </CardContent>
             </Card>
+
           </div>
         </TabsContent>
 
